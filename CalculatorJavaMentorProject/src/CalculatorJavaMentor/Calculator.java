@@ -58,11 +58,16 @@ public class Calculator {
                 default:
                     throw new IllegalArgumentException("Ошибка введена некоректная математическая операция");
             }
-
         }
         else {
             int firstNumber = convertNumberRomanToArabic(firstNumberStr);
             int secondNumber = convertNumberRomanToArabic(secondNumberStr);
+            if ((firstNumber <= 0) || (firstNumber > 10)) {
+                throw new IllegalArgumentException(firstNumber + " это число не находится в промежутке между 0 и 10");
+            }
+            if ((secondNumber <= 0) || (secondNumber > 10)) {
+                throw new IllegalArgumentException(secondNumber + " это число не находится в промежутке между 0 и 10");
+            }
             int result = 0;
             String resultRoman = "";
 
@@ -128,7 +133,7 @@ public class Calculator {
     }
 
     public static String convertNumberArabicToRoman(int number) {
-        if ((number <= 0) || (number > 10)) {
+       if ((number <= 0) || (number > 100)) {
             throw new IllegalArgumentException(number + " это число не находится в промежутке между 0 и 10");
         }
 
